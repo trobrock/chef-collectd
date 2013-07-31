@@ -5,8 +5,8 @@
 }
 
 @test "collectd configuration is valid" {
-  collectd -T | grep -q "collectd: Stopping 5 read threads."
-  collectd -T | grep -q "collectd: Stopping 5 write threads."
+  collectd -T 2>&1 | grep -q "collectd: Stopping 5 read threads."
+  collectd -T 2>&1 | grep -q "collectd: Stopping 5 write threads."
 }
 
 @test "should have the correct version of collectd installed" {
