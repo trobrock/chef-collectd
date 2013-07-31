@@ -7,4 +7,10 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "1.0.8"
 
 %w( ubuntu centos ).each { |os| supports os }
-%w( apt ark build-essential logrotate runit yum ).each { |cookbook| depends cookbook }
+
+depends "apt"
+depends "yum"
+depends "ark", ">= 0.3.0"
+depends "build-essential"
+depends "logrotate"
+depends "runit"
