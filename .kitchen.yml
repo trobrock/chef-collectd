@@ -1,40 +1,46 @@
 ---
 driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: true
+
 platforms:
+- name: ubuntu-12.10-amd64
+  driver_config:
+    box: ubuntu-12.10-amd64
+    box_url: https://dl.dropboxusercontent.com/u/165709740/boxes/quantal64-vanilla.box
 - name: ubuntu-12.04
   driver_config:
     box: opscode-ubuntu-12.04
-    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box
-  run_list:
-  - recipe[apt]
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
 - name: ubuntu-10.04
   driver_config:
     box: opscode-ubuntu-10.04
-    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-10.04.box
-  run_list:
-  - recipe[apt]
-- name: centos-6.3
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box
+- name: centos-6.4
   driver_config:
-    box: opscode-centos-6.3
-    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-centos-6.3.box
-  run_list:
-  - recipe[yum::epel]
-- name: centos-5.8
+    box: opscode-centos-6.4
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
+- name: centos-5.9
   driver_config:
-    box: opscode-centos-5.8
-    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-centos-5.8.box
-  run_list:
-  - recipe[yum::epel]
+    box: opscode-centos-5.9
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-5.9_provisionerless.box
+
 suites:
 - name: default
-  run_list:
-  - recipe[collectd]
+  run_list: ["recipe[collectd]"]
   attributes: {}
-- name: databag
-  run_list:
-  - recipe[collectd::data_bag_plugins]
-  attributes:
-    collectd:
-      plugins:
-      - load
-      - df
+- name: default_from_source
+  run_list: ["recipe[test_cookbook::source]"]
+  attributes: {}
+# - name: client_graphite
+#   run_list: ["recipe[collected::client_graphite"]
+#   attributes: {}
+# - name: client_collectd
+#   run_list: ["recipe[collected::client_collectd"]
+#   attributes: {}
+# - name: data_bag_plugins
+#   run_list: ["recipe[collected::data_bag_plugins"]
+#   attributes: {}
+# - name: server
+#   run_list: ["recipe[collected::server"]
+#   attributes: {}

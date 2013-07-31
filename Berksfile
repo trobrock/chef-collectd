@@ -1,5 +1,5 @@
 site :opscode
 
 metadata
-cookbook 'apt'
-cookbook 'yum'
+
+cookbook 'test_cookbook', path: './test/cookbooks/test_cookbook'
