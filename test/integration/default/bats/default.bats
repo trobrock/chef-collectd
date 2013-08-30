@@ -8,7 +8,3 @@
   collectd -T | grep -q "collectd: Stopping 5 read threads."
   collectd -T | grep -q "collectd: Stopping 5 write threads."
 }
-
-@test "collectd configuration is valid" {
-  collectd -t
-}
