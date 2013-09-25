@@ -5,6 +5,6 @@ gem 'tailor', '>= 1.1.2'
 
 group :integration do
   gem 'berkshelf'
-  gem "test-kitchen", "1.0.0.beta.2"
+  gem "test-kitchen", "1.0.0.alpha.5"
   gem 'kitchen-vagrant'
 end
