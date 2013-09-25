@@ -23,12 +23,12 @@ default['collectd']['install_type']               = "package"
 default['collectd']['source_tar_name_prefix']     = "collectd-"
 default['collectd']['source_tar_name_extension']  = ".tar.gz"
 default['collectd']['source_url_prefix']          = "https://s3.amazonaws.com/fisher-ops"
-default['collectd']['checksum']                   = "0b3fb2214ddeee3e8c6aabb7f3f231612f778645b2cb1bf3431b46844ec29359"
 default['collectd']['log_level']                  = "error"
 default['collectd']['log_file']                   = "collectd.log"
 default['collectd']['log_timestamp']              = "true"
 default['collectd']['log_print_severity']         = "false"
 default['collectd']['ulimit']['file_descriptors'] = "65536"
+default['collectd']['checksum'] = "0b3fb2214ddeee3e8c6aabb7f3f231612f778645b2cb1bf3431b46844ec29359"
 
 case node["platform_family"]
 when "debian"
